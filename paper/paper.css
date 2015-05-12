@@ -1,0 +1,28 @@
+.shape-handle {
+    background: white;
+    border: 1px solid black;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+}
+
+.shape-handle:hover {
+    background: #DDF;
+    border: 1px solid #66F;
+}
+
+.shape-add-handle {
+    background: transparent;
+    border: 1px dotted #4A4;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+}
+
+.shape-add-handle:hover {
+    background: #DFD;
+    border: 1px solid #0F0;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+}
