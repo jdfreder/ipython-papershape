@@ -1,4 +1,4 @@
-from IPython.html.widgets import DOMWidget, Widget, Color
+from IPython.html.widgets import DOMWidget, Widget
 from IPython.utils.traitlets import Float, List, Unicode, Int, Tuple, HasTraits, Bool
 from zmq.eventloop import IOLoop
 
@@ -12,7 +12,7 @@ class Point(CustomModel):
 
 class Path(CustomModel):
     _model_name = Unicode('PathModel')
-    stroke_color = Color('black', sync=True)
+    stroke_color = Unicode('black', sync=True)
     stroke_width = Int(1, sync=True)
     points = Tuple(sync=True)
     closed = Bool(False, sync=True)
