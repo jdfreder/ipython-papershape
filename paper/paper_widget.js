@@ -109,9 +109,12 @@ define(['jqueryui', 'widgets/js/manager', 'widgets/js/widget', 'paper'], functio
                 paper.setup(that.el);
                 paper.view.onFrame = function(event) {};
                 $(that.el).click(function(event) {
+                    console.log(event);
+                    var offset = $(that.el).offset();
+                    console.log(offset);
                     that.add_point({
-                        x: event.offsetX,
-                        y: event.offsetY,
+                        x: event.clientX - offset.left,
+                        y: event.clientY - offset.top,
                     });
                 });
                 that._update_paths();
@@ -230,7 +233,6 @@ define(['jqueryui', 'widgets/js/manager', 'widgets/js/widget', 'paper'], functio
                                 },
                                 drag: function() {
                                     var handle_pos = handle.position();
-                                    console.log(handle, handle_pos,  canvas_position);
                                     var p = path.get('points')[i];
                                     p.set('x', handle_pos.left + 5 - canvas_position.left);
                                     p.set('y', handle_pos.top + 5 - canvas_position.top);
