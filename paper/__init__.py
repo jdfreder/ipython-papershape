@@ -1,1 +1,1 @@
-from paper.paper import *
+from .paper import *
