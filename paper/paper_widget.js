@@ -101,6 +101,8 @@ define(['jqueryui', 'widgets/js/manager', 'widgets/js/widget', 'paper'], functio
 
         render: function() {
             PaperCanvas.__super__.render.apply(this, arguments);
+
+
             this.setElement($('<canvas/>'));
             this.listenTo(this.model, 'msg:custom', this.msg, this);
 
@@ -108,10 +110,8 @@ define(['jqueryui', 'widgets/js/manager', 'widgets/js/widget', 'paper'], functio
             this.after_displayed(function() {
                 paper.setup(that.el);
                 paper.view.onFrame = function(event) {};
-                $(that.el).click(function(event) {
-                    console.log(event);
+                $(that.el).on('mouseup', function(event) {
                     var offset = $(that.el).offset();
-                    console.log(offset);
                     that.add_point({
                         x: event.clientX - offset.left,
                         y: event.clientY - offset.top,
@@ -132,7 +132,7 @@ define(['jqueryui', 'widgets/js/manager', 'widgets/js/widget', 'paper'], functio
                     var that = this;
                     this.model.widget_manager.create_model({
                         model_name: 'PointModel', 
-                        widget_class: 'paper.Point'})
+                        widget_class: 'paper.paper.Point'})
                         .then(function(model) {
                             model.request_state(model.callbacks(that)).then(function() {
                                 model.set('x', point.x);
